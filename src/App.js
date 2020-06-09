@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import RepiceWindow from "./RecipeWindow";
 
 class App extends React.Component {
   constructor(props) {
@@ -35,11 +36,9 @@ class App extends React.Component {
           <input className="btn-submit" type="submit" value="Get Ingredients" />
         </form>
         {this.state.showResults ? (
-          <div>{this.state.value}</div>
+          <RepiceWindow value={this.state.value}/>
         ) : (
-          <h1>
-            Type a Dish Name to Search for it's Ingredients
-          </h1>
+          <h1>Type a Dish Name to Search for it's Ingredients</h1>
         )}
       </div>
     );
