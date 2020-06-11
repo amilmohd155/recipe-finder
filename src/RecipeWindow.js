@@ -1,20 +1,37 @@
 import React from "react";
 import "./RecipeWindow.css";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import Image from "material-ui-image";
 
 class RecipeWindow extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
+    const imageStyle = {
+      width: "300px",
+      height: "300px",
+      paddingTop: "0px",
+      border: "solid",
+      margin: "10px 40px",
+    };
     return (
       <div>
         <div className="recipe-main-div">
-          <h3>title</h3>
+          <h2>title</h2>
           <FavoriteBorderIcon style={{ fontSize: "15px" }} />
         </div>
-        <div>
-            
+        <div className="recipe-body-div">
+          <Image style={imageStyle} src="http://loremflickr.com/300/200" />
+          <div style={{ textAlign: "start" }}>
+            <p>Category of Meal - Chicken</p>
+            <p>Area of Meal - Italian</p>
+            <p>Ingredients</p>
+            <div>
+
+            </div>
+            <p>Recipes</p>
+          </div>
         </div>
       </div>
     );
