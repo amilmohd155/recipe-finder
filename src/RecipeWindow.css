@@ -1,0 +1,14 @@
+.recipe-main-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #f8eed4;
+    margin: 20px 10px;
+}
+.recipe-main-div h3 {
+    flex: 1;
+    color: #745a71;
+    margin: 0;
+}
