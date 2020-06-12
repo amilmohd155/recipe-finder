@@ -1,7 +1,7 @@
 import React from "react";
 import "./RecipeWindow.css";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import Image from "material-ui-image";
+import Image from 'material-ui-image'
 
 class RecipeWindow extends React.Component {
   constructor(props) {
@@ -18,13 +18,16 @@ class RecipeWindow extends React.Component {
     return (
       <div>
         <div className="recipe-main-div">
-          <h2>title</h2>
+          <h2>{this.props.meal.strMeal}</h2>
           <FavoriteBorderIcon style={{ fontSize: "15px" }} />
         </div>
         <div className="recipe-body-div">
           <Image style={imageStyle} src="http://loremflickr.com/300/200" />
           <div style={{ textAlign: "start" }}>
-            <p>Category of Meal - Chicken</p>
+            <span>
+              <p>Category of Meal -</p>
+              <p> {this.props.meal.strArea}</p>
+            </span>
             <p>Area of Meal - Italian</p>
             <p>Ingredients</p>
             <div>

@@ -21,5 +21,11 @@
   padding: 10px;
 }
 .recipe-body-div p {
-    margin: 0px;
+  margin: 0px;
+}
+.recipe-body-div span {
+  display: flex;
+}
+.recipe-body-div span p:first-of-type {
+  font-style: italic;
 }
