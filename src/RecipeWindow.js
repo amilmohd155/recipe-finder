@@ -1,12 +1,28 @@
 import React from "react";
 import "./RecipeWindow.css";
-import {FavoriteBorder, FavoriteBorderIcon} from "@material-ui/icons/FavoriteBorder";
 import Image from "material-ui-image";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
 class RecipeWindow extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { like: props.like };
+    this.handleLike = this.handleLike.bind(this);
+  }
+
+  handleLike() {
+    this.setState({ like: !this.state.like });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.meal.strMeal !== prevProps.meal.strMeal) {
+      this.setState({ like: false });
+    }
+  }
+
   render() {
     var i = 1;
-    var likeBool = true;
     var list = [];
     const imageStyle = {
       width: "300px",
@@ -47,8 +63,16 @@ class RecipeWindow extends React.Component {
     return (
       <div>
         <div className="recipe-main-div">
-          <h2><a href={this.props.meal.strSource}>{this.props.meal.strMeal}</a></h2>
-          <div></div>
+          <h2>
+            <a href={this.props.meal.strSource}>{this.props.meal.strMeal}</a>
+          </h2>
+          <div style={{ cursor: "pointer" }} onClick={this.handleLike}>
+            {this.state.like ? (
+              <FavoriteBorderIcon style={{ color: "red" }} />
+            ) : (
+              <FavoriteBorderIcon />
+            )}
+          </div>
         </div>
         <div className="recipe-body-div">
           <Image style={imageStyle} src={this.props.meal.strMealThumb} />

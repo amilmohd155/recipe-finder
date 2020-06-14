@@ -40,7 +40,6 @@ class App extends React.Component {
       }
     )
       .then((response) => {
-        console.log(response);
         if (!response.ok) {  
           throw response;
         }
