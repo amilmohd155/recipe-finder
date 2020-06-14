@@ -17,42 +17,45 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if(this.state.value !== undefined) {
+    if (this.state.value !== undefined) {
       event.preventDefault();
       this.fetchData();
     }
   }
 
-  // componentDidMount() {  
+  // componentDidMount() {
   //   this.fetchData();
   // }
 
-
   fetchData = () => {
-    
-    fetch("https://cors-anywhere.herokuapp.com/https://www.themealdb.com/api/json/v1/1/search.php?s=" + this.state.value, {
-      method: "GET",
-      dataType: "JSON",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      }
-    })
-    .then(res => res.json())
-    .then(
-      (data) => {
-        this.setState({
-          isLoaded: true, 
-          item: data['meals'][0]    
-        });
-      },
-      (error) => {
-        this.setState({
-          isLoaded: false,
-          error
-        });        
+    fetch(
+      "https://cors-anywhere.herokuapp.com/https://www.themealdb.com/api/json/v1/1/search.php?s=" +
+        this.state.value,
+      {
+        method: "GET",
+        dataType: "JSON",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
       }
     )
-  }
+      .then((response) => {
+        console.log(response);
+        if (!response.ok) {  
+          throw response;
+        }
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({
+          isLoaded: true,
+          item: data["meals"],
+        });
+      })
+      .catch((err) => {
+      
+      });
+  };
 
   render() {
     return (
@@ -70,7 +73,11 @@ class App extends React.Component {
           <input className="btn-submit" type="submit" value="Get Ingredients" />
         </form>
         {this.state.isLoaded ? (
-          <RepiceWindow meal={this.state.item} />
+          this.state.item !== null ? (
+            <RepiceWindow meal={this.state.item[0]} />
+          ) : (
+            <p>No Data Has been Received</p>
+          )
         ) : (
           <h1>Type a Dish Name to Search for it's Ingredients</h1>
         )}
