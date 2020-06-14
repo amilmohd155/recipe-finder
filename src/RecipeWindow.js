@@ -32,7 +32,6 @@ class RecipeWindow extends React.Component {
 
     function IngredientList(props) {
       const recipelist = props.recipelist;
-      console.log(recipelist);
 
       const listItem = recipelist.map((item, index) => (
         <span key={index}>
@@ -61,10 +60,12 @@ class RecipeWindow extends React.Component {
               <p>Area of Meal -&nbsp;</p>
               <p> {this.props.meal.strArea}</p>
             </span>
-            <p>Ingredients</p>
+            <p className="subtitle">Ingredients</p>
             <IngredientList recipelist={list} />
-            <p style={{ textAlign: "center" }}>Recipes</p>
-            <p>{this.props.meal.strInstructions}</p>
+            <p className="subtitle">Recipes</p>
+            <p style={{ textAlign: "center", backgroundColor: "#d7d0d0" }}>
+              {this.props.meal.strInstructions}
+            </p>
           </div>
         </div>
       </div>

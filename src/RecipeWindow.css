@@ -30,4 +30,25 @@
   font-style: italic;
 }
 
-.overflow-div {}
+.overflow-div {
+  overflow-y: scroll;
+  background-color: #d7d0d0;
+  padding: 0px 20px;
+  height: 200px;
+}
+
+.overflow-div span{
+  padding: 10px;
+}
+
+.overflow-div span p:first-of-type {
+  font-style: normal;
+}
+
+.subtitle {
+  margin-top: 10px !important;
+  margin-bottom: 2px !important;
+}
+.subtitle:nth-of-type(2) {
+text-align: center;
+}
