@@ -1,11 +1,12 @@
 import React from "react";
 import "./RecipeWindow.css";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import {FavoriteBorder, FavoriteBorderIcon} from "@material-ui/icons/FavoriteBorder";
 import Image from "material-ui-image";
 
 class RecipeWindow extends React.Component {
   render() {
     var i = 1;
+    var likeBool = true;
     var list = [];
     const imageStyle = {
       width: "300px",
@@ -46,8 +47,8 @@ class RecipeWindow extends React.Component {
     return (
       <div>
         <div className="recipe-main-div">
-          <h2>{this.props.meal.strMeal}</h2>
-          <FavoriteBorderIcon style={{ fontSize: "15px" }} />
+          <h2><a href={this.props.meal.strSource}>{this.props.meal.strMeal}</a></h2>
+          <div></div>
         </div>
         <div className="recipe-body-div">
           <Image style={imageStyle} src={this.props.meal.strMealThumb} />
